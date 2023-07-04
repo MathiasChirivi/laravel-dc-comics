@@ -26,7 +26,7 @@ class FumettoController extends Controller
      */
     public function create()
     {
-        //
+        return view("fumetti.create");
     }
 
     /**
@@ -37,7 +37,18 @@ class FumettoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newFumetto = new Fumetto;
+        $newFumetto->title = $data["title"];
+        $newFumetto->description = $data["description"];
+        $newFumetto->type = $data["type"];
+        $newFumetto->thumb = $data["thumb"];
+        $newFumetto->Price = $data["Price"];
+        $newFumetto->sale_date = $data["sale_date"];
+        $newFumetto->Series = $data["Series"];
+        $newFumetto->save();
+        return redirect()->route("fumetti.show", $newFumetto->id);
     }
 
     /**
@@ -46,9 +57,9 @@ class FumettoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Fumetto $fumetto)
+    public function show($id)
     {
-        // $fumetto = Fumetto::findorFail($id);
+        $fumetto = Fumetto::findorFail($id);
 
         return view("fumetti.show", compact("fumetto"));
     }

@@ -13,7 +13,8 @@
                     </li>                    
                     @endforeach
                 </ul>
-                </div>
+            </div>
+            <a href="{{route("fumetti.create")}}">Aggiungi un nuovo fumetto</a>
         </div>
     </div>
 
