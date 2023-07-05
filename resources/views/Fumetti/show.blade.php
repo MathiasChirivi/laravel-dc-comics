@@ -15,6 +15,7 @@
             </div>
         </div>
         <a href="{{route("home")}}">Torna ai fumetti</a>
+        <a class="btn btn-primary" href="{{ route("fumetti.edit", $fumetto) }}">Modifica questo prodotto</a>
     </div>
 
 </div>
