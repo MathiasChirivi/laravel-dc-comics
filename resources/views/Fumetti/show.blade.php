@@ -14,9 +14,10 @@
                 </div>
             </div>
         </div>
-        <a href="{{route("home")}}">Torna ai fumetti</a>
-        <a class="btn btn-primary" href="{{ route("fumetti.edit", $fumetto) }}">Modifica questo prodotto</a>
     </div>
-
+    <div class="mt-5">
+        <a class="btn btn-primary w-25 me-3" href="{{route("home")}}">Torna ai fumetti</a>
+        <a class="btn btn-primary w-25" href="{{ route("fumetti.edit", $fumetto) }}">Modifica questo prodotto</a>
+    </div>
 </div>
 @endsection

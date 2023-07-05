@@ -12,10 +12,13 @@
                 <input class="form-control" type="text" name="title">
 
                 <label for="name">description</label>
-                <textarea class="form-control" type="text" name="description" cols="30" rows="4">
+                <textarea class="form-control" type="text" name="description" cols="30" rows="4"></textarea>
 
                 <label for="name">type</label>
-                <input class="form-control" type="text" name="type">
+                <select class="form-control" name="type">
+                    <option value="comic book">Comic book</option>
+                    <option value="graphic novel">graphic novel</option>
+                </select>
 
                 <label for="name">thumb</label>
                 <input class="form-control" type="text" name="thumb">
