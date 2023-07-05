@@ -15,9 +15,19 @@
             </div>
         </div>
     </div>
-    <div class="mt-5">
-        <a class="btn btn-primary w-25 me-3" href="{{route("home")}}">Torna ai fumetti</a>
-        <a class="btn btn-primary w-25" href="{{ route("fumetti.edit", $fumetto) }}">Modifica questo prodotto</a>
+    <div class="d-flex justify-content-between mt-5">
+        <div class="d-flex">
+            <a class="btn btn-primary  me-3" href="{{route("home")}}">Torna ai fumetti</a>
+            <a class="btn btn-primary " href="{{ route("fumetti.edit", $fumetto) }}">Modifica questo prodotto</a>
+        </div>
+        <div>
+            <form id="deleteForm" action="{{ route('fumetti.destroy', $fumetto) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <input class="btn btn-danger" type="submit" value="Cancella il fumetto">
+            </form>
+        </div>
+    </div>
     </div>
 </div>
 @endsection

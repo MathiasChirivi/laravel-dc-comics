@@ -12,3 +12,16 @@ import * as bootstrap from 'bootstrap'
 //Informo Vite di processare le immagini presenti in /resources/img
 //Documentazione: https://laravel.com/docs/9.x/vite#blade-processing-static-assets
 // import.meta.glob(['../img/**'])
+
+document.addEventListener('DOMContentLoaded', function () {
+    const deleteComic = document.getElementById('deleteForm');
+
+    deleteComic.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const confirmed = window.confirm('Sei sicuro di voler eliminare questo fumetto?');
+
+        if (confirmed) {
+            this.submit();
+        }
+    });
+});
