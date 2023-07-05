@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="containerMainImg">
+    
+</div>
 <div class="container my-3">
     <h1>Welcome Page</h1>
     <div class="row g-4">
@@ -19,7 +22,7 @@
                     @endforeach
                 </ul>
             </div>
-            <a href="{{route("fumetti.create")}}">Aggiungi un nuovo fumetto</a>
+            <a class="btn btn-primary" href="{{route("fumetti.create")}}">Aggiungi un nuovo fumetto</a>
         </div>
     </div>
 
