@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Fumetto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FumettoController extends Controller
 {
@@ -29,6 +30,31 @@ class FumettoController extends Controller
         return view("fumetti.create");
     }
 
+    private function validateFumetto($data){
+        $validator = Validator::make($data,[
+            "title" => "required|min:4|max:50",
+            "description" => "required|min:5|max:65535",
+            "type" => "required|max:50",
+            "thumb"=> "required",
+            "Price" => "required|max:50",
+            "sale_date" => "required|max:50",
+            "Series" =>"required|max:50",
+        ],[
+
+            'title.required' => 'Il campo Titolo è richiesto',
+            'title.min' => 'Il campo Titolo deve avere almeno 4 caratteri',
+            'title.max' => 'Il campo Titolo non deve superare i 50 caratteri',
+            'description.required' => 'Il campo Descrizione è richiesto',
+            'Price.required' => 'Il campo Prezzo è richiesto',
+            'Series.required' => 'Il campo Serie è richiesto',
+            'sale_date.required' => 'Il campo Data Rilascio è richiesto',
+            'type.required' => 'Il campo Tipologia è richiesto',
+
+        ])->validate();
+        return $validator;
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -37,8 +63,9 @@ class FumettoController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-
+        
+        $data = $this->validateFumetto($request->all());
+        
         $newFumetto = new Fumetto;
         $newFumetto->title = $data["title"];
         $newFumetto->description = $data["description"];
@@ -87,7 +114,7 @@ class FumettoController extends Controller
      */
     public function update(Request $request, Fumetto $fumetti )
     {
-        $data = $request->all();
+        $data = $this->validateFumetto($request->all());
         
         $fumetti->title = $data["title"];
         $fumetti->description = $data["description"];
