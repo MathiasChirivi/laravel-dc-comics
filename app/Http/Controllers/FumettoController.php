@@ -45,10 +45,11 @@ class FumettoController extends Controller
             'title.min' => 'Il campo Titolo deve avere almeno 4 caratteri',
             'title.max' => 'Il campo Titolo non deve superare i 50 caratteri',
             'description.required' => 'Il campo Descrizione è richiesto',
+            'type.required' => 'Il campo Tipologia è richiesto',
+            'thumb.required' => 'Il campo dell immagine è richiesto',
             'Price.required' => 'Il campo Prezzo è richiesto',
             'Series.required' => 'Il campo Serie è richiesto',
             'sale_date.required' => 'Il campo Data Rilascio è richiesto',
-            'type.required' => 'Il campo Tipologia è richiesto',
 
         ])->validate();
         return $validator;
