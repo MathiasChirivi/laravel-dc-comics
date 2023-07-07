@@ -50,8 +50,8 @@
                 @enderror
 
                 <label for="name">Price</label>
-                <input class="form-control @error('Price') is-invalid @enderror" type="text" name="Price" value="{{old('price') ?? $fumetto->price}}">
-                @error("Price") 
+                <input class="form-control @error('price') is-invalid @enderror" type="text" name="price" value="{{old('price') ?? $fumetto->price}}">
+                @error("price") 
                     <div class="invalid-feedback">Error: {{$message}}</div>
                 @enderror
 
@@ -62,8 +62,8 @@
                 @enderror
 
                 <label for="name">Series</label>
-                <input class="form-control @error('Series') is-invalid @enderror" type="text" name="Series" value="{{old('series') ?? $fumetto->series}}">
-                @error("Series") 
+                <input class="form-control @error('series') is-invalid @enderror" type="text" name="series" value="{{old('series') ?? $fumetto->series}}">
+                @error("series") 
                     <div class="invalid-feedback">Error: {{$message}}</div>
                 @enderror
 

@@ -50,8 +50,8 @@
                 @enderror
 
                 <label for="name">Price</label>
-                <input class="form-control @error('Price') is-invalid @enderror" type="text" name="Price">
-                @error("Price") 
+                <input class="form-control @error('price') is-invalid @enderror" type="text" name="price">
+                @error("price") 
                     <div class="invalid-feedback">Error: {{$message}}</div>
                 @enderror
 
@@ -61,9 +61,9 @@
                     <div class="invalid-feedback">Error: {{$message}}</div>
                 @enderror
 
-                <label for="name">Series</label>
-                <input class="form-control @error('Series') is-invalid @enderror" type="text" name="Series">
-                @error("Series") 
+                <label for="name">series</label>
+                <input class="form-control @error('series') is-invalid @enderror" type="text" name="series">
+                @error("series") 
                     <div class="invalid-feedback">Error: {{$message}}</div>
                 @enderror
 

@@ -28,9 +28,9 @@ class UpdateFumettoRequest extends FormRequest
             "description" => "required|min:5|max:65535",
             "type" => "required|max:50",
             "thumb"=> "required",
-            "Price" => "required|max:50",
+            "price" => "required|max:50",
             "sale_date" => "required|max:50",
-            "Series" =>"required|max:50",
+            "series" =>"required|max:50",
         ];
     }
 
@@ -43,8 +43,8 @@ class UpdateFumettoRequest extends FormRequest
             'description.required' => 'Il campo Descrizione è richiesto',
             'type.required' => 'Il campo Tipologia è richiesto',
             'thumb.required' => 'Il campo dell immagine è richiesto',
-            'Price.required' => 'Il campo Prezzo è richiesto',
-            'Series.required' => 'Il campo Serie è richiesto',
+            'price.required' => 'Il campo Prezzo è richiesto',
+            'series.required' => 'Il campo Serie è richiesto',
             'sale_date.required' => 'Il campo Data Rilascio è richiesto',
         ];
     }
