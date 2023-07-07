@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreFumettoRequest;
+use App\Http\Requests\UpdateFumettoRequest;
 use App\Models\Fumetto;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class FumettoController extends Controller
 {
@@ -30,51 +30,19 @@ class FumettoController extends Controller
         return view("fumetti.create");
     }
 
-    private function validateFumetto($data){
-        $validator = Validator::make($data,[
-            "title" => "required|min:4|max:50",
-            "description" => "required|min:5|max:65535",
-            "type" => "required|max:50",
-            "thumb"=> "required",
-            "Price" => "required|max:50",
-            "sale_date" => "required|max:50",
-            "Series" =>"required|max:50",
-        ],[
-
-            'title.required' => 'Il campo Titolo è richiesto',
-            'title.min' => 'Il campo Titolo deve avere almeno 4 caratteri',
-            'title.max' => 'Il campo Titolo non deve superare i 50 caratteri',
-            'description.required' => 'Il campo Descrizione è richiesto',
-            'type.required' => 'Il campo Tipologia è richiesto',
-            'thumb.required' => 'Il campo dell immagine è richiesto',
-            'Price.required' => 'Il campo Prezzo è richiesto',
-            'Series.required' => 'Il campo Serie è richiesto',
-            'sale_date.required' => 'Il campo Data Rilascio è richiesto',
-
-        ])->validate();
-        return $validator;
-    }
-
-
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\StoreFumettoRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFumettoRequest $request)
     {
-        
-        $data = $this->validateFumetto($request->all());
-        
-        $newFumetto = new Fumetto;
-        $newFumetto->title = $data["title"];
-        $newFumetto->description = $data["description"];
-        $newFumetto->type = $data["type"];
-        $newFumetto->thumb = $data["thumb"];
-        $newFumetto->Price = $data["Price"];
-        $newFumetto->sale_date = $data["sale_date"];
-        $newFumetto->Series = $data["Series"];
+
+        $data = $request->validated();
+
+        $newFumetto = new Fumetto();
+        $newFumetto->fill($data);
         $newFumetto->save();
 
         return redirect()->route("fumetti.show", $newFumetto->id);
@@ -109,24 +77,18 @@ class FumettoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\UpdateFumettoRequest  $request
+     * @param   Fumetto $fumetti
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fumetto $fumetti )
+    public function update(UpdateFumettoRequest $request, Fumetto $fumetti )
     {
-        $data = $this->validateFumetto($request->all());
-        
-        $fumetti->title = $data["title"];
-        $fumetti->description = $data["description"];
-        $fumetti->type = $data["type"];
-        $fumetti->thumb = $data["thumb"];
-        $fumetti->Price = $data["Price"];
-        $fumetti->sale_date = $data["sale_date"];
-        $fumetti->Series = $data["Series"];
+        $data = $request->validated();
+        $fumetti->fill($data);
         $fumetti->update();
-
-        return redirect()->route('fumetti.show', $fumetti->id);
+        
+        return to_route("fumetti.show", $fumetti);
+        // return redirect()->route('fumetti.show', $fumetti->id);
     }
 
     /**
